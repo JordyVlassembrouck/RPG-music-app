@@ -18,7 +18,3 @@ npm start
 That's all!
 
 Contributions are always welcome! I will gladly taak a look at your pull request.
-
-## TO-DO
-* Add slider to represent elapsed time of song
-* Add possibility to save playlists
