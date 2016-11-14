@@ -1,0 +1,84 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+
+.md-card {
+  margin: 20px;
+}
+
+/***************/
+/* PLAY BUTTON */
+/***************/
+
+.play-button {
+  height: 50px;
+  width: 50px;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.left {
+  height: 100%;
+  float: left;
+  background-color: white;
+  width: 36%;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.triangle-1 {
+  transform: translate(0, -100%);
+}
+
+.triangle-1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  width: 0;
+  height: 0;
+  border-right: 50px solid #424242;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  transition: transform 0.25s ease;
+}
+
+.triangle-2 {
+  transform: translate(0, 100%);
+}
+
+.triangle-2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  width: 0;
+  height: 0;
+  border-right: 50px solid #424242;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  transition: transform 0.25s ease;
+}
+
+.right {
+  height: 100%;
+  float: right;
+  width: 36%;
+  background-color: white;
+  transition: all 0.25s ease;
+}
+
+.left.paused{
+  width: 50%;
+}
+
+.right.paused {
+  width: 50%; 
+}
+
+.triangle-1.paused {
+  transform: translate(0, -50%);
+}
+
+.triangle-2.paused {
+  transform: translate(0, 50%);
+} 

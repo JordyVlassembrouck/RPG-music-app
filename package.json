@@ -1,0 +1,38 @@
+{
+  "name": "rpg-music-app",
+  "description": "A simple application to list and play the tracks you want to use in your RPG adventure. The songs fade in and out and run in parallel with each other, which makes it possible to dynamically build encounters and battles.",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@angular/common": "^2.0.0",
+    "@angular/compiler": "^2.0.0",
+    "@angular/core": "^2.0.0",
+    "@angular/forms": "^2.0.0",
+    "@angular/http": "^2.0.0",
+    "@angular/platform-browser": "^2.0.0",
+    "@angular/platform-browser-dynamic": "^2.0.0",
+    "@angular/material": "^2.0.0-alpha.10",
+    "@angular/router": "^3.0.0",
+    "angular2-in-memory-web-api": "^0.0.21",
+    "bootstrap": "^3.3.7",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "^5.0.0-beta.12",
+    "systemjs": "^0.19.41",
+    "zone.js": "^0.6.26"
+  },
+  "devDependencies": {
+    "concurrently": "^3.1.0",
+    "lite-server": "^2.2.2",
+    "typescript": "^2.0.9",
+    "typings": "^2.0.0"
+  }
+}
