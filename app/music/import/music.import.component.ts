@@ -6,14 +6,14 @@ import { Track }            from '../music.track';
 
 @Component({
     selector: 'music-import',
-    templateUrl: '../app/music/import/music.import.component.html',
-    styleUrls: ['../app/music/import/music.import.component.css']
+    templateUrl: 'dev/music/import/music.import.component.html',
+    styleUrls: ['dev/music/import/music.import.component.css']
 })
 
 export class MusicImportComponent {
     
     constructor(private musicService: MusicService, private mdIconRegistry: MdIconRegistry) {
-        mdIconRegistry.addSvgIcon('music', '../app/music/import/music.svg');
+        mdIconRegistry.addSvgIcon('music', 'dev/music/import/img/music.svg');
     }
     
     triggerInputClick() {

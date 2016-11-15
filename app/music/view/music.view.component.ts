@@ -1,22 +1,19 @@
 import { Component, Input } from '@angular/core';
-import { MdIconRegistry }   from '@angular/material';
 
 import { MusicService }     from '../music.service';
 import { Track }            from '../music.track';
 
 @Component({
     selector: 'music-view',
-    templateUrl: '../app/music/view/music.view.component.html',
-    styleUrls: ['../app/music/view/music.view.component.css']
+    templateUrl: 'dev/music/view/music.view.component.html',
+    styleUrls: ['dev/music/view/music.view.component.css']
 })
 
 export class MusicViewComponent {
     @Input() track: Track;
     private trackPlaying: boolean = false;
 
-    constructor(private musicService: MusicService, private mdIconRegistry: MdIconRegistry) {
-        mdIconRegistry.addSvgIcon('play', '../app/music/view/play.svg');
-        mdIconRegistry.addSvgIcon('pause', '../app/music/view/pause.svg');
+    constructor(private musicService: MusicService) {
     }
 
     removeTrack(): void {

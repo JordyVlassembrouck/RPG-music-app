@@ -5,7 +5,7 @@ import { Track }            from './music.track';
 
 @Component({
     selector: 'music',
-    templateUrl: '../app/music/music.component.html',
+    templateUrl: 'dev/music/music.component.html',
     providers: [
         MusicService
     ],
