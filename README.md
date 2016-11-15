@@ -8,12 +8,17 @@ Build your app and gather all the necessary dependencies with
 ```
 npm install
 ```
-
+Compile the typescript with
+```
+tsc
+```
+Setup your dev directory to host all of your files in
+```
+npm run build.dev
+```
 Then, start the server with
 ```
 npm start
 ```
-
-That's all!
 
 Contributions are always welcome! I will gladly taak a look at your pull request.
