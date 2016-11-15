@@ -1,7 +1,6 @@
 # RPG-music-app
 
 the RPG Music app is a simple application that allows you to list and concurrently play the tracks you want to use in your RPG adventure.
-The tracks fade in and out so that each scene of your campaign smoothly flows into the next one.
 
 ## Fire up the app
 
