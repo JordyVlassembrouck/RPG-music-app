@@ -16,4 +16,4 @@ npm start
 
 That's all!
 
-Contributions are always welcome! I will gladly taak a look at your pull request.
+Contributions are always welcome! I will gladly take a look at your pull request.
