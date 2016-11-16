@@ -3,15 +3,14 @@
   "description": "A simple application to list and play the tracks you want to use in your RPG adventure. The songs fade in and out and run in parallel with each other, which makes it possible to dynamically build encounters and battles.",
   "version": "0.0.1",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "test": "karma start config/karma.conf.js",
+    "start": "npm run build && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "build": "npm run clean.dev && tsc && npm run build.dev",
+    "clean.dev": "gulp clean.dev --gulpfile config/gulpfile.js",
+    "build.dev": "gulp build.dev --gulpfile config/gulpfile.js",
+    "tsc:w": "tsc -w",
     "lite": "lite-server",
     "postinstall": "typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings",
-    "clean.dev": "gulp clean.dev --gulpfile config/gulpfile.js",
-    "build.dev": "gulp build.dev --gulpfile config/gulpfile.js"
+    "test": "karma start config/karma.conf.js"
   },
   "license": "MIT",
   "repository": "https://github.com/JordyVlassembrouck/RPG-music-app.git",

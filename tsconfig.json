@@ -9,8 +9,5 @@
         "removeComments": false,
         "noImplicitAny": false,
         "outDir": "dev"
-    },
-    "include": [
-        "app/"
-    ]
+    }
 }
