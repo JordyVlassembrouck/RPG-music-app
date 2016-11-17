@@ -32,10 +32,30 @@ export class MusicViewComponent {
     }
 
     _play() {
-        this.track.audioElement.play();
+        var track = this.track.audioElement;
+        track.volume = 0;
+        track.play();
+        var fade = setInterval(function() {
+            if (track.volume > 0.95) {
+                track.volume = 1;
+                clearInterval(fade);
+                return;
+            }
+            track.volume += 0.05;
+        }, 50);
     }
 
     _pause() {
-        this.track.audioElement.pause();
+        var track = this.track.audioElement;
+        track.volume = 1;
+        var fade = setInterval(function() {
+            if (track.volume < 0.05) {
+                track.volume = 0;
+                track.pause();
+                clearInterval(fade);
+                return;
+            }
+            track.volume -= 0.05;
+        }, 50);
     }
 }
