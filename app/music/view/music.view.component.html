@@ -1,12 +1,20 @@
 <md-card>
-    {{ track.name }}
-    <button md-raised-button color="accent" (click)="removeTrack()">remove</button>
-    <div (click)="changeSongState()">
-        <a class="play-button" id="play" href="#">
-            <div [class.paused]="!trackPlaying" class="left"></div>
-            <div [class.paused]="!trackPlaying" class="right"></div>
-            <div [class.paused]="!trackPlaying" class="triangle-1"></div>
-            <div [class.paused]="!trackPlaying" class="triangle-2"></div>
-        </a>
+    <div style="display:flex;">
+        <div (click)="changeSongState()">
+            <a class="play-button" style="margin-right:24px;" id="play" href="#">
+                <div [class.paused]="!trackPlaying" class="left"></div>
+                <div [class.paused]="!trackPlaying" class="right"></div>
+                <div [class.paused]="!trackPlaying" class="triangle-1"></div>
+                <div [class.paused]="!trackPlaying" class="triangle-2"></div>
+            </a>
+        </div>
+        <div style="flex:1;font:35px;"> 
+            {{ track.name }}
+        </div>
+        <div>
+            <button md-icon-button (click)="removeTrack()">
+                <md-icon svgIcon="remove"></md-icon>
+            </button>
+        </div>
     </div>
 </md-card>

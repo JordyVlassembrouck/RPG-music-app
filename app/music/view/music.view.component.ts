@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MdIconRegistry }   from '@angular/material';
 
 import { MusicService }     from '../music.service';
 import { Track }            from '../music.track';
@@ -13,7 +14,8 @@ export class MusicViewComponent {
     @Input() track: Track;
     private trackPlaying: boolean = false;
 
-    constructor(private musicService: MusicService) {
+    constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry) {
+        mdIconRegistry.addSvgIcon('remove', 'dev/music/view/img/delete.svg');
     }
 
     removeTrack(): void {
