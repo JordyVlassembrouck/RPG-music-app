@@ -1,17 +1,17 @@
 <md-card>
-    <div style="display:flex;">
+    <div style="display: flex;">
         <div (click)="changeSongState()">
-            <a class="play-button" style="margin-right:24px;" id="play" href="#">
+            <a class="play-button" id="play" href="#">
                 <div [class.paused]="!trackPlaying" class="left"></div>
                 <div [class.paused]="!trackPlaying" class="right"></div>
                 <div [class.paused]="!trackPlaying" class="triangle-1"></div>
                 <div [class.paused]="!trackPlaying" class="triangle-2"></div>
             </a>
         </div>
-        <div style="flex:1;font:35px;"> 
+        <div class="card-name"> 
             {{ track.name }}
         </div>
-        <div>
+        <div class="remove-button">
             <button md-icon-button (click)="removeTrack()">
                 <md-icon svgIcon="remove"></md-icon>
             </button>

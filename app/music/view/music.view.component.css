@@ -1,7 +1,20 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:300);
 
+/********/
+/* CARD */
+/********/
+
 .md-card {
   margin: 20px;
+}
+
+.card-name {
+   flex: 30;
+   font-size: 25px;
+}
+
+.remove-button {
+  flex: 1;
 }
 
 /***************/
@@ -14,6 +27,8 @@
   display: block;
   overflow: hidden;
   position: relative;
+  flex: 2;
+  margin-right: 25px;
 }
 
 .left {
