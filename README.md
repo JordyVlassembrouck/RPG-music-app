@@ -19,6 +19,7 @@ npm start
 That's all!
 
 Contributions are always welcome! I will gladly take a look at your pull request.
+
 The [Angular Material2](https://github.com/angular/material2) library should be used for all design purposes.
 
 [screenshot]: ./screenshot.png "RPG music app"
