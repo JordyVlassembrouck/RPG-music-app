@@ -22,8 +22,8 @@ gulp.task('copy.images.to.dev', function() {
     .pipe(gulp.dest('../dev'));
 });
 
-gulp.task('build.dev', function(done) {
-    runSequence('copy.html.to.dev', 'copy.css.to.dev', 'copy.images.to.dev', function() {
+gulp.task('copy.assets.dev', function(done) {
+  runSequence('copy.html.to.dev', 'copy.css.to.dev', 'copy.images.to.dev', function() {
     done();
-    });
+  })
 });
