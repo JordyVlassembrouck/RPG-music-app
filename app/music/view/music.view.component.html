@@ -1,6 +1,6 @@
 <md-card>
-    <div style="display: flex;">
-        <div (click)="changeSongState()">
+    <div class="card-content">
+        <div class="play-button-outer" (click)="changeSongState()">
             <a class="play-button" id="play" href="#">
                 <div [class.paused]="!trackPlaying" class="left"></div>
                 <div [class.paused]="!trackPlaying" class="right"></div>
@@ -11,10 +11,8 @@
         <div class="card-name"> 
             {{ track.name }}
         </div>
-        <div class="remove-button">
-            <button md-icon-button (click)="removeTrack()">
-                <md-icon svgIcon="remove"></md-icon>
-            </button>
+        <div class="remove-button-outer">
+            <img class="remove-button" src="dev/music/view/img/delete.svg" (click)="removeTrack()" />
         </div>
     </div>
 </md-card>

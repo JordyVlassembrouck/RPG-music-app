@@ -8,13 +8,25 @@
   margin: 20px;
 }
 
+.card-content {
+  display: flex;
+}
+
+.play-button-outer {
+  flex: 2;
+}
+
 .card-name {
-   flex: 30;
-   font-size: 25px;
+  flex: 30;
+  font-size: 25px;
+}
+
+.remove-button-outer {
+  flex: 1;
 }
 
 .remove-button {
-  flex: 1;
+  cursor: pointer;
 }
 
 /***************/
@@ -27,8 +39,6 @@
   display: block;
   overflow: hidden;
   position: relative;
-  flex: 2;
-  margin-right: 25px;
 }
 
 .left {
