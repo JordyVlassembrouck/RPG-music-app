@@ -15,7 +15,7 @@ export class MusicViewComponent {
     private trackPlaying: boolean = false;
 
     constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry) {
-        mdIconRegistry.addSvgIcon('more', 'dev/music/view/img/more.svg');
+        mdIconRegistry.addSvgIcon('remove', 'dev/music/view/img/delete.svg');
     }
 
     removeTrack(): void {
