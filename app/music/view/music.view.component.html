@@ -14,9 +14,12 @@
             </span>
         </div>
         <div class="remove-button-outer">
-            <button md-icon-button (click)="removeTrack()">
+            <button md-icon-button [md-menu-trigger-for]="menu">
                 <md-icon svgIcon="more"></md-icon>
             </button>
+            <md-menu #menu="mdMenu">
+                <button md-menu-item (click)="removeTrack()"> Remove </button>
+            </md-menu>
         </div>
     </div>
 </md-card>
