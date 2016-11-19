@@ -10,7 +10,6 @@
 
 .card-content {
   display: flex;
-  font-size: 20px;
 }
 
 .play-button-outer {
@@ -18,9 +17,10 @@
 }
 
 .card-name {
-  flex: 35;
+  flex: 45;
   line-height: 40px;
-  margin-left: 20px;
+  margin: 0px 24px;
+  font-size: 20px;
 }
 
 .remove-button-outer {
