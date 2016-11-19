@@ -31,6 +31,11 @@
   cursor: pointer;
 }
 
+.custom-track-name {
+  font-size: 15px; 
+  line-height: 15px;
+}
+
 /***************/
 /* PLAY BUTTON */
 /***************/
