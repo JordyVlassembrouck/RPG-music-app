@@ -24,7 +24,11 @@ export class MusicViewComponent {
         this.musicService.removeTrack(this.track);
     }
 
-    changeSongState() {
+    changeName(): void {
+        this.track.name = "New Name";
+    }
+
+    changeSongState(): void {
         if (this.trackPlaying == false) {
             this._play();
             this.trackPlaying = true;
