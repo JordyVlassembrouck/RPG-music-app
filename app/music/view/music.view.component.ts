@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { MdIconRegistry }   from '@angular/material';
+import { Component, Input, ViewContainerRef }                       from '@angular/core';
+import { MdIconRegistry, MdDialogRef, MdDialog, MdDialogConfig }    from '@angular/material';
 
-
-import { MusicService }     from '../music.service';
-import { Track }            from '../music.track';
+import { MusicService }                                             from '../music.service';
+import { Track }                                                    from '../music.track';
+import { ChangeNameDialog }                                         from './modal/music.view.name.modal';
 
 @Component({
     selector: 'music-view',
@@ -14,8 +14,9 @@ import { Track }            from '../music.track';
 export class MusicViewComponent {
     @Input() track: Track;
     private trackPlaying: boolean = false;
+    dialogRef: MdDialogRef<ChangeNameDialog>;
 
-    constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry) {
+    constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         mdIconRegistry.addSvgIcon('more', 'dev/music/view/img/more.svg');
     }
 
@@ -24,7 +25,7 @@ export class MusicViewComponent {
         this.musicService.removeTrack(this.track);
     }
 
-    changeSongState() {
+    changeSongState(): void {
         if (this.trackPlaying == false) {
             this._play();
             this.trackPlaying = true;
@@ -33,6 +34,23 @@ export class MusicViewComponent {
             this.trackPlaying = false;
         }
     }
+
+    changeName(): void {
+        this._openChangeNameDialog(); 
+    }
+
+    _openChangeNameDialog(): void {
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+
+        this.dialogRef = this.dialog.open(ChangeNameDialog, config);
+        this.dialogRef.afterClosed().subscribe(newTrackName => {
+            this.dialogRef = null;
+            if (newTrackName != undefined) {
+                this.track.customName = newTrackName;
+            } 
+        });
+    }    
 
     _play() {
         this.track.audioElement.play();

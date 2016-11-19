@@ -6,6 +6,7 @@ import { AppComponent }         from './app.component';
 import { MusicComponent }       from './music/music.component';
 import { MusicViewComponent }   from './music/view/music.view.component';
 import { MusicImportComponent } from './music/import/music.import.component';
+import { ChangeNameDialog }     from './music/view/modal/music.view.name.modal';
 
 @NgModule({
     imports: [
@@ -16,7 +17,11 @@ import { MusicImportComponent } from './music/import/music.import.component';
         AppComponent,
         MusicComponent,
         MusicViewComponent,
-        MusicImportComponent
+        MusicImportComponent,
+        ChangeNameDialog
+    ],
+    entryComponents: [
+        ChangeNameDialog
     ],
     bootstrap: [ AppComponent ]
 })

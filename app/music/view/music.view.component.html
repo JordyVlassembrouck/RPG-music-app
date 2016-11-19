@@ -9,15 +9,14 @@
             </a>
         </div>
         <div class="card-name">
-            <span>
-                {{ track.name }}
-            </span>
+            <span>{{ track.customName }}</span> &nbsp; <span class="custom-track-name">({{ track.name }})</span>
         </div>
         <div class="remove-button-outer">
             <button md-icon-button [md-menu-trigger-for]="menu">
                 <md-icon svgIcon="more"></md-icon>
             </button>
-            <md-menu #menu="mdMenu">
+            <md-menu #menu="mdMenu" x-position="before">
+                <button md-menu-item (click)="changeName()"> Change name </button>
                 <button md-menu-item (click)="removeTrack()"> Remove </button>
             </md-menu>
         </div>
