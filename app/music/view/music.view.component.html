@@ -8,11 +8,15 @@
                 <div [class.paused]="!trackPlaying" class="triangle-2"></div>
             </a>
         </div>
-        <div class="card-name"> 
-            {{ track.name }}
+        <div class="card-name">
+            <span>
+                {{ track.name }}
+            </span>
         </div>
         <div class="remove-button-outer">
-            <img class="remove-button" src="dev/music/view/img/delete.svg" (click)="removeTrack()" />
+            <button md-icon-button (click)="removeTrack()">
+                <md-icon svgIcon="more"></md-icon>
+            </button>
         </div>
     </div>
 </md-card>

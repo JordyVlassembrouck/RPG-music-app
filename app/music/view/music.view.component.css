@@ -10,15 +10,17 @@
 
 .card-content {
   display: flex;
+  font-size: 20px;
 }
 
 .play-button-outer {
-  flex: 2;
+  flex: 1;
 }
 
 .card-name {
-  flex: 30;
-  font-size: 25px;
+  flex: 35;
+  line-height: 40px;
+  margin-left: 20px;
 }
 
 .remove-button-outer {
@@ -34,8 +36,8 @@
 /***************/
 
 .play-button {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   display: block;
   overflow: hidden;
   position: relative;
@@ -61,9 +63,9 @@
   background-color: transparent;
   width: 0;
   height: 0;
-  border-right: 50px solid #424242;
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
+  border-right: 40px solid #424242;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
   transition: transform 0.25s ease;
 }
 
@@ -78,9 +80,9 @@
   background-color: transparent;
   width: 0;
   height: 0;
-  border-right: 50px solid #424242;
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
+  border-right: 40px solid #424242;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
   transition: transform 0.25s ease;
 }
 
