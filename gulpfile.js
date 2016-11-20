@@ -8,17 +8,17 @@ gulp.task('clean.dev', function() {
 });
 
 gulp.task('copy.html.to.dev', function() {
-  return gulp.src('app/**/*.html', {base: 'app'})
+  return gulp.src('src/app/**/*.html', {base: 'src'})
     .pipe(gulp.dest('dev'));
 });
 
 gulp.task('copy.css.to.dev', function() {
-  return gulp.src('app/**/*.css', {base: 'app'})
+  return gulp.src('src/app/**/*.css', {base: 'src'})
     .pipe(gulp.dest('dev'));
 });
 
 gulp.task('copy.images.to.dev', function() {
-  return gulp.src('app/**/*.svg', {base: 'app'})
+  return gulp.src('src/images/**/*.svg', {base: 'src'})
     .pipe(gulp.dest('dev'));
 });
 

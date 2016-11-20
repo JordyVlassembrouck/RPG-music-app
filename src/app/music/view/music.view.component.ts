@@ -7,8 +7,8 @@ import { ChangeNameDialog }                                         from './moda
 
 @Component({
     selector: 'music-view',
-    templateUrl: 'dev/music/view/music.view.component.html',
-    styleUrls: ['dev/music/view/music.view.component.css']
+    templateUrl: './dev/app/music/view/music.view.component.html',
+    styleUrls: ['./dev/app/music/view/music.view.component.css']
 })
 
 export class MusicViewComponent {
@@ -17,7 +17,7 @@ export class MusicViewComponent {
     dialogRef: MdDialogRef<ChangeNameDialog>;
 
     constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
-        mdIconRegistry.addSvgIcon('more', 'dev/music/view/img/more.svg');
+        mdIconRegistry.addSvgIcon('more', './dev/images/more.svg');
     }
 
     removeTrack(): void {

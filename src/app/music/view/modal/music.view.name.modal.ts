@@ -4,8 +4,8 @@ import { MdDialogRef }          from '@angular/material';
 
 @Component({
     selector: 'change-name-modal',
-    templateUrl: 'dev/music/view/modal/music.view.name.modal.html',
-    styleUrls: ['dev/music/view/modal/music.view.name.modal.css']
+    templateUrl: './dev/app/music/view/modal/music.view.name.modal.html',
+    styleUrls: ['./dev/app/music/view/modal/music.view.name.modal.css']
 })
 
 export class ChangeNameDialog {
