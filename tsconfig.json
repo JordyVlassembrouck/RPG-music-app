@@ -9,5 +9,9 @@
         "removeComments": false,
         "noImplicitAny": false,
         "outDir": "dev"
-    }
+    },
+    "exclude": [
+        "**/**_spec.ts",
+        "node_modules/"
+    ]
 }
