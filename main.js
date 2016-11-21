@@ -18,26 +18,21 @@ function createWindow () {
     slashes: true
   }))
 
-  mainWindow.webContents.openDevTools();
-
   mainWindow.on('closed', function () {
     mainWindow = null
   })
 }
 
 function startServer() {
-  console.log('starting server');
   var server = http.createServer(function (req, res) {
     var port = crypto.randomBytes(16).toString("hex");
     ipc.once(port, function (ev, status, head, body) {
-      //console.log(status, head, body);
       res.writeHead(status, head);
       res.end(body);
     });
     window.webContents.send("request", req, port);
   });
   server.listen(8000);
-  console.log("http://localhost:8000/");
   createWindow();
 }
 
