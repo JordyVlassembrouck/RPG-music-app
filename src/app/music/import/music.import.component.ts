@@ -45,7 +45,6 @@ export class MusicImportComponent {
         var audioElement = document.createElement("audio");
         audioElement.src = progressEvent.target.result;
         audioElement.setAttribute("type", importedTrack.type);
-        audioElement.setAttribute("controls", "controls");
         audioElement.setAttribute("loop", "loop");
         return audioElement;
     }
