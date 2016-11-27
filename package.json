@@ -1,16 +1,24 @@
 {
   "name": "rpg-music-app",
   "description": "A simple application to list and play the tracks you want to use in your RPG adventure. The songs fade in and out and run in parallel with each other, which makes it possible to dynamically build encounters and battles.",
-  "version": "0.0.1",
+  "version": "1.0.0-beta",
+  "main": "main.js",
+  "author": "Jordy Vlassembrouck",
   "scripts": {
-    "start": "npm run build && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "build": "npm run clean.dev && tsc && npm run build.dev",
-    "clean.dev": "gulp clean.dev --gulpfile config/gulpfile.js",
-    "build.dev": "gulp build.dev --gulpfile config/gulpfile.js",
+    "start": "npm run lite",
+    "start.dev": "npm run build.dev && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "build.dev": "npm run clean.dev && tsc && npm run copy.resources.dev",
+    "clean.dev": "gulp clean.dev --gulpfile gulpfile.js",
+    "copy.resources.dev": "gulp copy.resources.dev --gulpfile gulpfile.js",
+    "test": "karma start karma.conf.js",
+    "electron": "electron .",
+    "dist": "build",
+    "pack": "build --dir",
+    "clean.modules": "rm -rf node_modules && npm install",
+    "release": "build --x64 --publish never",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
-    "postinstall": "typings install",
-    "test": "karma start config/karma.conf.js"
+    "postinstall": "typings install && install-app-deps"
   },
   "license": "MIT",
   "repository": "https://github.com/JordyVlassembrouck/RPG-music-app.git",
@@ -33,6 +41,8 @@
   "devDependencies": {
     "concurrently": "^3.1.0",
     "del": "^2.2.2",
+    "electron": "^1.4.7",
+    "electron-builder": "^8.6.0",
     "gulp": "^3.9.1",
     "jasmine-core": "^2.5.2",
     "karma": "^1.3.0",
@@ -42,5 +52,11 @@
     "run-sequence": "^1.2.2",
     "typescript": "^2.0.9",
     "typings": "^2.0.0"
+  },
+  "build": {
+    "appId": "12345",
+    "mac": {
+      "category": "RPG Resource"
+    }
   }
 }

@@ -8,6 +8,10 @@
         "experimentalDecorators": true,
         "removeComments": false,
         "noImplicitAny": false,
-        "outDir": "dev"
-    }
+        "outDir": "dev/app"
+    },
+    "exclude": [
+        "**/**_spec.ts",
+        "node_modules/"
+    ]
 }

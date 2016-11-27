@@ -1,5 +1,7 @@
 # RPG-music-app
 
+![RPG music app][screenshot]
+
 the RPG Music app is a simple application that allows you to list and concurrently play the tracks you want to use in your RPG adventure.
 
 ## Fire up the app
@@ -17,3 +19,7 @@ npm start
 That's all!
 
 Contributions are always welcome! I will gladly take a look at your pull request.
+
+The [Angular Material2](https://github.com/angular/material2) library should be used for all design purposes.
+
+[screenshot]: ./screenshot.png "RPG music app"

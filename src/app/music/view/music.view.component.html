@@ -1,0 +1,24 @@
+<md-card>
+    <div class="card-content">
+        <div class="play-button-outer" (click)="changeSongState()">
+            <a class="play-button" id="play" href="#">
+                <div [class.paused]="!trackPlaying" class="left"></div>
+                <div [class.paused]="!trackPlaying" class="right"></div>
+                <div [class.paused]="!trackPlaying" class="triangle-1"></div>
+                <div [class.paused]="!trackPlaying" class="triangle-2"></div>
+            </a>
+        </div>
+        <div class="card-name">
+            <span>{{ track.customName }}</span> &nbsp; <span class="custom-track-name">({{ track.name }})</span>
+        </div>
+        <div class="more-button-outer">
+            <button md-icon-button [md-menu-trigger-for]="menu">
+                <md-icon svgIcon="more"></md-icon>
+            </button>
+            <md-menu #menu="mdMenu" x-position="before">
+                <button md-menu-item (click)="changeName()"> Change name </button>
+                <button md-menu-item (click)="removeTrack()"> Remove </button>
+            </md-menu>
+        </div>
+    </div>
+</md-card>
