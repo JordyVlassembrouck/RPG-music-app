@@ -58,10 +58,7 @@
   "build": {
     "appId": "12345",
     "mac": {
-      "category": "RPG Resource"
-    },
-    "win": {
-      "iconUrl": "https://camo.githubusercontent.com/23cdd6905e874b869bf03dacc49c119fab21583c/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f323732393338342f323238373135382f62313438666565382d396665392d313165332d383033372d3235356638636231653566342e706e67"
+      "icon": "build/icon"
     }
   }
 }
