@@ -24,12 +24,12 @@ export class MusicImportComponent {
         let importedTrack = this._retrieveTrackFromInputElement();
         this._clearInputElement();
         let reader: any = new FileReader();
-        let _thisImportComponent = this;
+        let _this = this;
         reader.onload = function(progressEvent) {
-            let audioElement = _thisImportComponent._createAudioElement(progressEvent, importedTrack);
-            let trackName = _thisImportComponent._removeFileExtentionFromSongName(importedTrack.name);
+            let audioElement = _this._createAudioElement(progressEvent, importedTrack);
+            let trackName = _this._removeFileExtentionFromSongName(importedTrack.name);
             let track = new Track(trackName, audioElement);
-            _thisImportComponent.musicService.addTrack(track);
+            _this.musicService.addTrack(track);
         };
         reader.readAsDataURL(importedTrack);
     }

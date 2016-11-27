@@ -58,8 +58,9 @@ export class MusicViewComponent implements OnInit {
     }    
 
     _play() {
-        clearInterval(this.fadeEffect);
+        this._removeRemainingFadeEffect();
         let track = this.track.audioElement;
+        
         track.play();
         this.fadeEffect = setInterval(function() {
             if (track.volume <= 0.99) {
@@ -69,13 +70,13 @@ export class MusicViewComponent implements OnInit {
                 clearInterval(this.fadeEffect);
                 return;
             }
-            console.log(track.volume, new Date());
         }, 20);
     }
 
     _pause(): void {
-        clearInterval(this.fadeEffect);
+        this._removeRemainingFadeEffect();
         let track = this.track.audioElement;
+        
         this.fadeEffect = setInterval(function() {
             if (track.volume >= 0.01) {
                 track.volume -= 0.01;
@@ -85,7 +86,10 @@ export class MusicViewComponent implements OnInit {
                 clearInterval(this.fadeEffect);
                 return;
             }
-            console.log(track.volume, new Date());
         }, 20);
+    }
+
+    _removeRemainingFadeEffect() {
+        clearInterval(this.fadeEffect);
     }
 }
