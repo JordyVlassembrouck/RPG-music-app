@@ -3,7 +3,7 @@ var del = require('del');
 var runSequence = require('run-sequence');
 
 gulp.task('clean.dev', function() {
-  return del(['dev'], {force: true});
+  return del(['dev', 'dist'], {force: true});
 });
 
 gulp.task('copy.html.to.dev', function() {
