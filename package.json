@@ -1,7 +1,7 @@
 {
   "name": "rpg-music-app",
   "description": "A simple application to list and play the tracks you want to use in your RPG adventure. The songs fade in and out and run in parallel with each other, which makes it possible to dynamically build encounters and battles.",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-beta",
   "main": "main.js",
   "author": "Jordy Vlassembrouck",
   "scripts": {
@@ -15,9 +15,7 @@
     "dist": "build",
     "pack": "build --dir",
     "clean.modules": "rm -rf node_modules && npm install",
-    
     "release": "build --x64 --publish never",
-    
     "tsc:w": "tsc -w",
     "lite": "lite-server",
     "postinstall": "typings install && install-app-deps"
@@ -58,6 +56,7 @@
   "build": {
     "appId": "12345",
     "mac": {
+      "category": "RPG Resource",
       "icon": "build/icon"
     }
   }

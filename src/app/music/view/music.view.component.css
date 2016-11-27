@@ -23,12 +23,8 @@
   font-size: 20px;
 }
 
-.remove-button-outer {
+.more-button-outer {
   flex: 1;
-}
-
-.remove-button {
-  cursor: pointer;
 }
 
 .custom-track-name {

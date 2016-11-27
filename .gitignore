@@ -3,4 +3,4 @@ dist/
 typings/
 .vscode/
 dev/
-releases/
+build/
