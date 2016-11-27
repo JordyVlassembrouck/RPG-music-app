@@ -2,6 +2,7 @@
 
 ## v1.0.0
 * songs start and stop with a fade effect for a smooth transition
+* file extention is now removed form the original displayed songname
 
 ## v1.0.0-alpha
 * import songs form your filesystem
