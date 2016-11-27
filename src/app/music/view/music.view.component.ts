@@ -1,4 +1,4 @@
-import { Component, Input, ViewContainerRef }                       from '@angular/core';
+import { Component, Input, ViewContainerRef, OnInit }               from '@angular/core';
 import { MdIconRegistry, MdDialogRef, MdDialog, MdDialogConfig }    from '@angular/material';
 
 import { MusicService }                                             from '../music.service';
@@ -11,13 +11,18 @@ import { ChangeNameDialog }                                         from './moda
     styleUrls: ['./dev/app/music/view/music.view.component.css']
 })
 
-export class MusicViewComponent {
+export class MusicViewComponent implements OnInit {    
     @Input() track: Track;
     private trackPlaying: boolean = false;
+    private fadeEffect: NodeJS.Timer;
     dialogRef: MdDialogRef<ChangeNameDialog>;
 
     constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         mdIconRegistry.addSvgIcon('more', './dev/images/more.svg');
+    }
+
+    ngOnInit() {
+        this.track.audioElement.volume = 0;
     }
 
     removeTrack(): void {
@@ -53,30 +58,34 @@ export class MusicViewComponent {
     }    
 
     _play() {
-        var track = this.track.audioElement;
-        track.volume = 0;
+        clearInterval(this.fadeEffect);
+        let track = this.track.audioElement;
         track.play();
-        var fade = setInterval(function() {
-            if (track.volume > 0.95) {
+        this.fadeEffect = setInterval(function() {
+            if (track.volume <= 0.99) {
+                track.volume += 0.01;
+            } else {
                 track.volume = 1;
-                clearInterval(fade);
+                clearInterval(this.fadeEffect);
                 return;
             }
-            track.volume += 0.05;
-        }, 50);
+            console.log(track.volume, new Date());
+        }, 20);
     }
 
-    _pause() {
-        var track = this.track.audioElement;
-        track.volume = 1;
-        var fade = setInterval(function() {
-            if (track.volume < 0.05) {
+    _pause(): void {
+        clearInterval(this.fadeEffect);
+        let track = this.track.audioElement;
+        this.fadeEffect = setInterval(function() {
+            if (track.volume >= 0.01) {
+                track.volume -= 0.01;
+            } else {
                 track.volume = 0;
                 track.pause();
-                clearInterval(fade);
+                clearInterval(this.fadeEffect);
                 return;
             }
-            track.volume -= 0.05;
-        }, 50);
+            console.log(track.volume, new Date());
+        }, 20);
     }
 }
