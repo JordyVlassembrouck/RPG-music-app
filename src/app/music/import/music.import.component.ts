@@ -21,16 +21,21 @@ export class MusicImportComponent {
     }
 
     importTrack() {
-        var importedTrack = this._retrieveTrackFromInputElement();
+        let importedTrack = this._retrieveTrackFromInputElement();
         this._clearInputElement();
-        var reader: any = new FileReader();
-        var _thisImportComponent = this;
+        let reader: any = new FileReader();
+        let _this = this;
         reader.onload = function(progressEvent) {
-            var audioElement = _thisImportComponent._createAudioElement(progressEvent, importedTrack);
-            var track = new Track(importedTrack.name, audioElement);
-            _thisImportComponent.musicService.addTrack(track);
+            let audioElement = _this._createAudioElement(progressEvent, importedTrack);
+            let trackName = _this._removeFileExtentionFromSongName(importedTrack.name);
+            let track = new Track(trackName, audioElement);
+            _this.musicService.addTrack(track);
         };
         reader.readAsDataURL(importedTrack);
+    }
+
+    _removeFileExtentionFromSongName(trackName: string) {
+        return trackName.substring(0, trackName.lastIndexOf('.'));
     }
 
     _retrieveTrackFromInputElement(): any {
@@ -42,10 +47,9 @@ export class MusicImportComponent {
     }
 
     _createAudioElement(progressEvent: any, importedTrack: any): HTMLAudioElement {
-        var audioElement = document.createElement("audio");
+        let audioElement = document.createElement("audio");
         audioElement.src = progressEvent.target.result;
         audioElement.setAttribute("type", importedTrack.type);
-        audioElement.setAttribute("controls", "controls");
         audioElement.setAttribute("loop", "loop");
         return audioElement;
     }

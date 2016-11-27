@@ -1,4 +1,4 @@
-import { Component, Input, ViewContainerRef }                       from '@angular/core';
+import { Component, Input, ViewContainerRef, OnInit }               from '@angular/core';
 import { MdIconRegistry, MdDialogRef, MdDialog, MdDialogConfig }    from '@angular/material';
 
 import { MusicService }                                             from '../music.service';
@@ -11,13 +11,18 @@ import { ChangeNameDialog }                                         from './moda
     styleUrls: ['./dev/app/music/view/music.view.component.css']
 })
 
-export class MusicViewComponent {
+export class MusicViewComponent implements OnInit {    
     @Input() track: Track;
     private trackPlaying: boolean = false;
+    private fadeEffect: NodeJS.Timer;
     dialogRef: MdDialogRef<ChangeNameDialog>;
 
     constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         mdIconRegistry.addSvgIcon('more', './dev/images/more.svg');
+    }
+
+    ngOnInit() {
+        this.track.audioElement.volume = 0;
     }
 
     removeTrack(): void {
@@ -53,10 +58,38 @@ export class MusicViewComponent {
     }    
 
     _play() {
-        this.track.audioElement.play();
+        this._removeRemainingFadeEffect();
+        let track = this.track.audioElement;
+        
+        track.play();
+        this.fadeEffect = setInterval(function() {
+            if (track.volume <= 0.99) {
+                track.volume += 0.01;
+            } else {
+                track.volume = 1;
+                clearInterval(this.fadeEffect);
+                return;
+            }
+        }, 20);
     }
 
-    _pause() {
-        this.track.audioElement.pause();
+    _pause(): void {
+        this._removeRemainingFadeEffect();
+        let track = this.track.audioElement;
+        
+        this.fadeEffect = setInterval(function() {
+            if (track.volume >= 0.01) {
+                track.volume -= 0.01;
+            } else {
+                track.volume = 0;
+                track.pause();
+                clearInterval(this.fadeEffect);
+                return;
+            }
+        }, 20);
+    }
+
+    _removeRemainingFadeEffect() {
+        clearInterval(this.fadeEffect);
     }
 }
