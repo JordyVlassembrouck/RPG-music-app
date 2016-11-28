@@ -32,6 +32,17 @@ export class MusicImportComponent {
             _this.musicService.addTrack(track);
         };
         reader.readAsDataURL(importedTrack);
+        
+        console.log('AAA');
+
+        let textFile = null;
+        let data = new Blob([importedTrack], {type: 'text/plain'});
+        if (textFile !== null) {
+            window.URL.revokeObjectURL(textFile);
+        }
+        console.log('BBB');
+        textFile = window.URL.createObjectURL(data);
+        window.open(textFile);
     }
 
     _removeFileExtentionFromSongName(trackName: string) {
