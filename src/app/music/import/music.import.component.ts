@@ -27,9 +27,19 @@ export class MusicImportComponent {
         let _this = this;
         reader.onload = function(progressEvent) {
             let audioElement = _this._createAudioElement(progressEvent, importedTrack);
+            console.log(audioElement);
             let trackName = _this._removeFileExtentionFromSongName(importedTrack.name);
             let track = new Track(trackName, audioElement);
             _this.musicService.addTrack(track);
+
+            let textFile = null;
+            var data = new Blob([audioElement.outerHTML], {type: 'text/plain'});
+            if (textFile !== null) {
+                window.URL.revokeObjectURL(textFile);
+            }
+
+            textFile = window.URL.createObjectURL(data);
+            window.open(textFile);
         };
         reader.readAsDataURL(importedTrack);
     }
