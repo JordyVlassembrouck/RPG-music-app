@@ -11,7 +11,6 @@
         "outDir": "dev/app"
     },
     "exclude": [
-        "**/**_spec.ts",
         "node_modules/"
     ]
 }

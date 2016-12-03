@@ -22,7 +22,7 @@ export class MusicViewComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.track.audioElement.volume = 0;
+        this.track.getAudioElement().volume = 0;
     }
 
     removeTrack(): void {
@@ -59,7 +59,7 @@ export class MusicViewComponent implements OnInit {
 
     _play() {
         this._removeRemainingFadeEffect();
-        let track = this.track.audioElement;
+        let track = this.track.getAudioElement();
         
         track.play();
         this.fadeEffect = setInterval(function() {
@@ -75,7 +75,7 @@ export class MusicViewComponent implements OnInit {
 
     _pause(): void {
         this._removeRemainingFadeEffect();
-        let track = this.track.audioElement;
+        let track = this.track.getAudioElement();
         
         this.fadeEffect = setInterval(function() {
             if (track.volume >= 0.01) {
