@@ -4,19 +4,19 @@ import { Subject }      from 'rxjs/Subject';
 import { Track }        from './music.track'; 
 
 @Injectable()
-export class MusicService{
-    
-    private trackAdded = new Subject<Track>();
-    private trackRemoved = new Subject<Track>();
+export class MusicService {
+    private _tracks: Track[] = [];
 
-    trackAdded$ = this.trackAdded.asObservable();
-    trackRemoved$ = this.trackRemoved.asObservable();
+    getTracks(): Track[] {
+        return this._tracks;
+    }
 
     addTrack(track: Track): void {
-        this.trackAdded.next(track);
+        this._tracks.push(track);
     }
 
     removeTrack(track: Track): void {
-        this.trackRemoved.next(track);
+        let trackPosition = this._tracks.indexOf(track);
+        this._tracks.splice(trackPosition, 1);
     }
 }

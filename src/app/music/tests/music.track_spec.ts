@@ -3,7 +3,7 @@ import { Track }    from '../music.track';
 describe('Music track', () => {
     describe('constructor()', () => {
         it('constructs correctly', () => {
-            let audioElement = document.createElement("audio");
+            let audioElement = document.createElement('audio');
             let songName = 'Yakety Sax';
 
             let track = new Track(songName, audioElement);
