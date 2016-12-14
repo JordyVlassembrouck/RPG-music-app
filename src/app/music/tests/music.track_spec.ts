@@ -8,8 +8,8 @@ describe('Music track', () => {
 
             let track = new Track(songName, audioElement);
 
-            expect(track.getName()).toEqual(songName);
-            expect(track.getAudioElement()).toEqual(audioElement);
+            expect(track.name).toEqual(songName);
+            expect(track.audioElement).toEqual(audioElement);
             expect(track.customName).toEqual(songName);
         });
     });

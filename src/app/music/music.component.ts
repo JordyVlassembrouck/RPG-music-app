@@ -13,12 +13,12 @@ export class MusicComponent {
     tracks: Track[] = [];
 
     constructor(private musicService: MusicService) {
-        // musicService.trackAdded$.subscribe(track => {
-        //     this.tracks.push(track);
-        // });
-        // musicService.trackRemoved$.subscribe(track => {
-        //     let trackPosition = this.tracks.indexOf(track);
-        //     this.tracks.splice(trackPosition, 1);
-        // });
+        musicService.trackAdded$.subscribe(track => {
+            this.tracks.push(track);
+        });
+        musicService.trackRemoved$.subscribe(track => {
+            let trackPosition = this.tracks.indexOf(track);
+            this.tracks.splice(trackPosition, 1);
+        });
     }
 }
