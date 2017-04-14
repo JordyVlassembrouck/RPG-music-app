@@ -5,8 +5,10 @@ import { Track }            from './music.track';
 
 @Component({
     selector: 'music',
-    templateUrl: './dev/app/music/music.component.html',
     providers: [ MusicService ],
+    template: `
+        <music-view *ngFor="let track of tracks" [track]="track"></music-view>
+        <music-import></music-import>`
 })
 
 export class MusicComponent {
@@ -16,6 +18,7 @@ export class MusicComponent {
         musicService.trackAdded$.subscribe(track => {
             this.tracks.push(track);
         });
+        
         musicService.trackRemoved$.subscribe(track => {
             let trackPosition = this.tracks.indexOf(track);
             this.tracks.splice(trackPosition, 1);

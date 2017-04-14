@@ -1,5 +1,6 @@
 import { Component, Input, ViewContainerRef, OnInit }               from '@angular/core';
 import { MdIconRegistry, MdDialogRef, MdDialog, MdDialogConfig }    from '@angular/material';
+import { DomSanitizer }                                             from '@angular/platform-browser';
 
 import { MusicService }                                             from '../music.service';
 import { Track }                                                    from '../music.track';
@@ -7,18 +8,43 @@ import { ChangeNameDialog }                                         from './moda
 
 @Component({
     selector: 'music-view',
-    templateUrl: './dev/app/music/view/music.view.component.html',
-    styleUrls: ['./dev/app/music/view/music.view.component.css']
+    styleUrls: ['./dev/app/music/view/music.view.component.css'],
+    template: `
+        <md-card>
+            <div class="card-content">
+                <div class="play-button-outer" (click)="changeSongState()">
+                    <a class="play-button" id="play" href="#">
+                        <div [class.paused]="!trackPlaying" class="left"></div>
+                        <div [class.paused]="!trackPlaying" class="right"></div>
+                        <div [class.paused]="!trackPlaying" class="triangle-1"></div>
+                        <div [class.paused]="!trackPlaying" class="triangle-2"></div>
+                    </a>
+                </div>
+                <div class="card-name">
+                    <span>{{ track.customName }}</span> &nbsp; <span class="custom-track-name">({{ track.name }})</span>
+                </div>
+                <div class="more-button-outer">
+                    <button md-icon-button [md-menu-trigger-for]="menu">
+                        <md-icon svgIcon="more"></md-icon>
+                    </button>
+                    <md-menu #menu="mdMenu" x-position="before">
+                        <button md-menu-item (click)="changeName()"> Change name </button>
+                        <button md-menu-item (click)="removeTrack()"> Remove </button>
+                    </md-menu>
+                </div>
+            </div>
+        </md-card>`
 })
 
 export class MusicViewComponent implements OnInit {    
     @Input() track: Track;
+
     private trackPlaying: boolean = false;
     private fadeEffect: NodeJS.Timer;
-    dialogRef: MdDialogRef<ChangeNameDialog>;
+    private dialogRef: MdDialogRef<ChangeNameDialog>;
 
-    constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
-        mdIconRegistry.addSvgIcon('more', './dev/images/more.svg');
+    constructor(private musicService: MusicService, mdIconRegistry: MdIconRegistry, public dialog: MdDialog, public viewContainerRef: ViewContainerRef, private sanitizer: DomSanitizer) {
+        mdIconRegistry.addSvgIcon('more', sanitizer.bypassSecurityTrustResourceUrl('./dev/images/more.svg'));
     }
 
     ngOnInit() {
@@ -48,7 +74,7 @@ export class MusicViewComponent implements OnInit {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.viewContainerRef;
 
-        this.dialogRef = this.dialog.open(ChangeNameDialog, config);
+        this.dialogRef = this.dialog.open(ChangeNameDialog);
         this.dialogRef.afterClosed().subscribe(newTrackName => {
             this.dialogRef = null;
             if (newTrackName != undefined) {

@@ -1,19 +1,24 @@
 import { Component }        from '@angular/core';
 import { MdIconRegistry }   from '@angular/material';
+import { DomSanitizer }       from '@angular/platform-browser';
 
 import { MusicService }     from '../music.service';
 import { Track }            from '../music.track';
 
 @Component({
     selector: 'music-import',
-    templateUrl: './dev/app/music/import/music.import.component.html',
-    styleUrls: ['./dev/app/music/import/music.import.component.css']
+    styleUrls: ['./dev/app/music/import/music.import.component.css'],
+    template: `
+        <button md-fab class="fixed-button" (click)="triggerInputClick()">
+            <md-icon svgIcon="music"></md-icon>
+        </button>
+        <input type="file" id="invisible-input" class="fixed-button" (change)="importTrack()" />`
 })
 
 export class MusicImportComponent {
     
-    constructor(private musicService: MusicService, private mdIconRegistry: MdIconRegistry) {
-        mdIconRegistry.addSvgIcon('music', './dev/images/music.svg');
+    constructor(private musicService: MusicService, private iconRegistry: MdIconRegistry, private sanitizer: DomSanitizer) {
+        iconRegistry.addSvgIcon('music', sanitizer.bypassSecurityTrustResourceUrl('./dev/images/music.svg'));
     }
     
     triggerInputClick() {

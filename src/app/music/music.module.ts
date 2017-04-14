@@ -10,7 +10,7 @@ import { ChangeNameDialog }     from './view/modal/music.view.name.modal';
 @NgModule({
     imports: [ 
         BrowserModule,
-        MaterialModule.forRoot()
+        MaterialModule
  ],
     declarations: [
         MusicComponent,

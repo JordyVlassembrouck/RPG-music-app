@@ -2,7 +2,7 @@ import { Track }    from '../music.track';
 
 describe('Music track', () => {
     describe('constructor()', () => {
-        it('constructs correctly', () => {
+        it('constructs correctly and sets name to customName', () => {
             let audioElement = document.createElement('audio');
             let songName = 'Yakety Sax';
 
